@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap");
+
+:root {
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --dark-gray: hsl(0, 0%, 63%);
+  --very-dark-gray: hsl(0, 0%, 27%);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+
+  nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    max-width: 1440px;
+    padding: 0 4rem;
+    margin: 3rem auto 0;
+
+    .logo {
+      margin-right: 3rem;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      li {
+        a {
+          color: var(--white);
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  section {
+    .image-slider {
+      display: grid;
+      grid-template-columns: minmax(auto, 52.5rem) minmax(300px, 1fr);
+      .image-container {
+        position: relative;
+        line-height: 0;
+        overflow: hidden;
+        .image-wrapper {
+          display: flex;
+          transition: all 0.5s ease-in-out;
+          height: 100%;
+          .image {
+            width: 100%;
+            position: relative;
+            // img {
+            //   position: absolute;
+            //   left: 0;
+            //   bottom: 0;
+            //   height: 100%;
+            //   object-fit: cover;
+            // }
+          }
+        }
+      }
+
+      .content-container {
+        position: relative;
+        display: grid;
+        place-items: center;
+        .content-box {
+          padding: 6rem;
+          h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+          }
+          p {
+            color: var(--dark-gray);
+            font-size: 1rem;
+            line-height: 1.4rem;
+            margin-bottom: 1.75rem;
+          }
+          a {
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--black);
+            font-weight: 700;
+            letter-spacing: 0.8rem;
+            text-transform: uppercase;
+
+            .icon-arrow {
+              display: inline-block;
+              background-image: url("img/icon-arrow.svg");
+              background-size: contain;
+              background-repeat: no-repeat;
+              width: 2rem;
+              height: 0.8rem;
+              margin-left: 1rem;
+            }
+          }
+        }
+        .slide-navigation {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: 10;
+          button {
+            border: none;
+            background-color: var(--black);
+            width: 5rem;
+            aspect-ratio: 1/1;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &:hover {
+              background-color: var(--very-dark-gray);
+            }
+          }
+        }
+      }
+    }
+  }
+}
