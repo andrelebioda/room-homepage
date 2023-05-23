@@ -44,6 +44,7 @@ main {
     max-width: 1440px;
     padding: 0 4rem;
     margin: 3rem auto 0;
+    z-index: 10;
 
     .logo {
       margin-right: 3rem;
@@ -65,7 +66,12 @@ main {
   section {
     .image-slider {
       display: grid;
-      grid-template-columns: minmax(auto, 52.5rem) minmax(300px, 1fr);
+      grid-template-columns: minmax(auto, 52.5rem) minmax(500px, 1fr);
+
+      @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+      }
+
       .image-container {
         position: relative;
         line-height: 0;
@@ -77,13 +83,11 @@ main {
           .image {
             width: 100%;
             position: relative;
-            // img {
-            //   position: absolute;
-            //   left: 0;
-            //   bottom: 0;
-            //   height: 100%;
-            //   object-fit: cover;
-            // }
+            @media (max-width: 991px) {
+              img {
+                width: 100%;
+              }
+            }
           }
         }
       }
@@ -92,36 +96,56 @@ main {
         position: relative;
         display: grid;
         place-items: center;
-        .content-box {
-          padding: 6rem;
-          h2 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-          }
-          p {
-            color: var(--dark-gray);
-            font-size: 1rem;
-            line-height: 1.4rem;
-            margin-bottom: 1.75rem;
-          }
-          a {
-            display: flex;
-            align-items: center;
-            position: relative;
-            font-size: 0.9rem;
-            color: var(--black);
-            font-weight: 700;
-            letter-spacing: 0.8rem;
-            text-transform: uppercase;
 
-            .icon-arrow {
-              display: inline-block;
-              background-image: url("img/icon-arrow.svg");
-              background-size: contain;
-              background-repeat: no-repeat;
-              width: 2rem;
-              height: 0.8rem;
-              margin-left: 1rem;
+        .content-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+
+          .content-box {
+            padding: 5rem;
+            position: absolute;
+            height: 100%;
+            display: none;
+
+            @media (max-width: 991px) {
+              position: relative;
+              padding: 2rem;
+            }
+
+            &.active {
+              display: block;
+            }
+
+            h2 {
+              font-size: 2.75rem;
+              margin-bottom: 1.5rem;
+            }
+            p {
+              color: var(--dark-gray);
+              font-size: 1rem;
+              line-height: 1.4rem;
+              margin-bottom: 1.75rem;
+            }
+            a {
+              display: flex;
+              align-items: center;
+              position: relative;
+              font-size: 0.9rem;
+              color: var(--black);
+              font-weight: 700;
+              letter-spacing: 0.8rem;
+              text-transform: uppercase;
+
+              .icon-arrow {
+                display: inline-block;
+                background-image: url("img/icon-arrow.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 2rem;
+                height: 0.8rem;
+                margin-left: 1rem;
+              }
             }
           }
         }
@@ -133,6 +157,14 @@ main {
           left: 0;
           bottom: 0;
           z-index: 10;
+
+          @media (max-width: 991px) {
+            left: auto;
+            bottom: auto;
+            top: -4rem;
+            right: 0;
+          }
+
           button {
             border: none;
             background-color: var(--black);
@@ -142,6 +174,10 @@ main {
             cursor: pointer;
             &:hover {
               background-color: var(--very-dark-gray);
+            }
+
+            @media (max-width: 991px) {
+              width: 4rem;
             }
           }
         }
